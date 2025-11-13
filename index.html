@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="To-Do-App" />
+    <link rel="icon" href="/todo-vite-ts-app/assets/logo-Bvldf-Y_.webp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/todo-vite-ts-app/style.css">
+    <title>My List</title>
+    <script type="module" crossorigin src="/todo-vite-ts-app/assets/index-CYE9rsPu.js"></script>
+    <link rel="stylesheet" crossorigin href="/todo-vite-ts-app/assets/index-CjQGW4q4.css">
+  </head>
+  <body>
+    <div id="app">
+      <form id="itemEntryForm">
+        <input id="add-entry-item" type="text" placeholder="Add New Item" />
+        <button disabled type="submit" class="add-item" aria-label="Add Item">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </form>
+
+      <div id="searchEntryForm">
+        <input id="search-item" type="text" placeholder="Search Item" />
+      </div>
+
+      <div class="clear-lst">
+        <label>My List</label>
+        <button id="clear" aria-label="Clear All List">Clear</button>
+      </div>
+
+      <hr />
+
+      <ul id="list-items">
+        <li>
+          <input type="checkbox" />
+          <label>item</label>
+          <button><i class="fa-solid fa-trash"></i></button>
+        </li>
+      </ul>
+    </div>
+
+  </body>
+</html>
