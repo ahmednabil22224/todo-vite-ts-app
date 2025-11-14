@@ -20,7 +20,7 @@ It allows users to manage their tasks easily with options to add, update, delete
 - 🔍 Filter tasks (all, completed, pending)
 - 💾 Data persistence with Local Storage
 
----
+--- 
 
 ## 🛠️ Technologies Used
 
