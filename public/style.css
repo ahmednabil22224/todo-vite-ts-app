@@ -93,10 +93,10 @@ button:has(i) {
   max-width: 700px;
   height: 100vh;
   margin: auto;
-  border-radius: 8px;
   display: grid;
   grid-template-rows: auto 1fr auto;
   background-color: #999;
+  border: 3px solid #000;
 }
 @media (max-width: 770px) {
   #root {
