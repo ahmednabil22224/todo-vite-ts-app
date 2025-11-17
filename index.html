@@ -5,38 +5,67 @@
     <meta name="description" content="To-Do-App" />
     <link rel="icon" href="/todo-vite-ts-app/assets/logo-Bvldf-Y_.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/todo-vite-ts-app/style.css">
+    <link rel="stylesheet" href="/todo-vite-ts-app/style.css" />
     <title>My List</title>
-    <script type="module" crossorigin src="/todo-vite-ts-app/assets/index-CYE9rsPu.js"></script>
+    <script type="module" crossorigin src="/todo-vite-ts-app/assets/index-BTmuLu-U.js"></script>
     <link rel="stylesheet" crossorigin href="/todo-vite-ts-app/assets/index-CjQGW4q4.css">
   </head>
   <body>
     <div id="app">
-      <form id="itemEntryForm">
-        <input id="add-entry-item" type="text" placeholder="Add New Item" />
-        <button disabled type="submit" class="add-item" aria-label="Add Item">
-          <i class="fa-solid fa-plus"></i>
-        </button>
-      </form>
+      <header>
+        <div class="search-form">
+          <h1>My Tasks</h1>
+          <input
+            id="search-tasks"
+            class="search"
+            type="text"
+            placeholder="Search Task" />
+          <button
+            id="mode"
+            class="mode"
+            title="Toggle Mode"
+            aria-label="Dark Light Mode">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </div>
 
-      <div id="searchEntryForm">
-        <input id="search-item" type="text" placeholder="Search Item" />
+        <form id="taskEntryForm">
+          <input id="add-entry-task" type="text" placeholder="Add New Task" />
+          <button
+            id="add"
+            class="add-task"
+            type="submit"
+            title="Add TasK"
+            aria-label="Add New Task">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </form>
+      </header>
+      <ul id="list-items"></ul>
+      <div class="footer" data-attr="50%">
+        <div class="progress">
+          <div class="text-bar">
+            ✅ <span class="complete-tasks-count">0</span> From
+            <span class="all-tasks-count">0</span> Tasks Completed
+          </div>
+          <div class="bar"></div>
+        </div>
+        <div class="content">
+          <div>
+            <p>All Tasks: <span class="all-tasks-count">0</span></p>
+            <p>Important: <span class="important-tasks-count">0</span></p>
+            <p>Completed: <span class="complete-tasks-count">0</span></p>
+            <p>Not Completed: <span class="notcomplete-tasks-count"></span></p>
+          </div>
+          <button
+            class="clear-lst"
+            title="Clear Tasks List"
+            aria-label="Clear Tasks List">
+            <i class="fa-solid fa-trash-can"></i>
+          </button>
+        </div>
+        <div id="toast" class="toast"></div>
       </div>
-
-      <div class="clear-lst">
-        <label>My List</label>
-        <button id="clear" aria-label="Clear All List">Clear</button>
-      </div>
-
-      <hr />
-
-      <ul id="list-items">
-        <li>
-          <input type="checkbox" />
-          <label>item</label>
-          <button><i class="fa-solid fa-trash"></i></button>
-        </li>
-      </ul>
     </div>
 
   </body>
