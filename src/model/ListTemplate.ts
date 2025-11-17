@@ -130,6 +130,10 @@ export default class ListTemplate implements DOMList {
                   dateP.textContent = new Date().toLocaleString();
                   label.textContent = updateInput.value;
                   fullList.save();
+                  showToast(
+                    `Task updated to ${updateInput.value} successfully ✏️!`,
+                    "warning"
+                  );
                 }
                 document.querySelector(".over-lay-box")?.remove();
               })
@@ -160,6 +164,10 @@ export default class ListTemplate implements DOMList {
                   this.render(fullList);
                   fullList.save();
                   renderFooter();
+                  showToast(
+                    `Task ${item.item} deleted successfully ❌`,
+                    "error"
+                  );
                 }
                 document.querySelector(".over-lay-box")?.remove();
               })

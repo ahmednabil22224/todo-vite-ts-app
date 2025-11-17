@@ -2,7 +2,7 @@ import Item from "./model/Item";
 import List from "./model/List";
 import ListTemplate from "./model/ListTemplate";
 import { renderFooter } from "./components/Footer";
-import { overLay } from "./components/Overlay";
+import { overLay, showToast } from "./components/Overlay";
 
 const init = () => {
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -36,12 +36,14 @@ const init = () => {
     const id = lst.listItems.length
       ? Number(lst.listItems[lst.listItems.length - 1].id) + 1
       : 1;
-    const newItem = new Item(id.toString(), entryAddTask.value.slice(0, 25));
+    let taskTitle: string = entryAddTask.value;
+    const newItem = new Item(id.toString(), taskTitle.slice(0, 25));
     entryAddTask.value = "";
     entryAddTask.focus();
     addTask.disabled = true;
     lst.add(newItem);
     template.render(lst);
+    showToast(`Task ${taskTitle} added successfully ✅`, "success");
   });
 
   // --------------------- Search Item -----------------------
@@ -69,6 +71,10 @@ const init = () => {
           lst.clear();
           template.render(lst);
           renderFooter();
+          showToast(
+            `The list is cleared successfully ❌`,
+            "error"
+          );
         }
         document.querySelector(".over-lay-box")?.remove();
       })
