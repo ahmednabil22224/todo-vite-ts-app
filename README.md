@@ -7,7 +7,7 @@ It allows users to manage their tasks easily with options to add, update, delete
 
 🚀 Live Demo
 
-👉 https://github.com/ahmednabil22224/todo-vite-ts-app
+👉 [https://github.com/ahmednabil22224/todo-vite-ts-app](https://ahmednabil22224.github.io/todo-vite-ts-app/)
 
 ---
 
@@ -24,7 +24,7 @@ It allows users to manage their tasks easily with options to add, update, delete
 - **Overlay Messages & Toast Notifications** for user actions
 - **LocalStorage Support** to save tasks persistently
 
----
+--- 
 
 ## 🛠️ Technologies Used
 
