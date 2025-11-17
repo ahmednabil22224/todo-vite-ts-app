@@ -67,8 +67,8 @@ todo-vite-ts App/
 
 ![Desktop Screenshot](./src/images/preview-dark-desktop.png)
 ![Desktop Screenshot](./src/images/preview-light-desktop.png)
-<center><img src="./src/images/preview-dark-mobile.png" width="400" alt="Mobile Dark Screenshot" /></center>
-<center><img src="./src/images/preview-light-mobile.png" width="400" style="border:1px solid #ccc" alt="Mobile Dark Screenshot" /></center>
+<div align="center"><img src="./src/images/preview-dark-mobile.png" width="400" alt="Mobile Dark Screenshot" /></div>
+<div align="center"><img src="./src/images/preview-light-mobile.png" width="400" style="border:1px solid #ccc" alt="Mobile Dark Screenshot" /></div>
 
 ---
 
