@@ -66,7 +66,7 @@ todo-vite-ts App/
 ## 📸 Screenshots
 
 ![Desktop Screenshot](./src/images/preview-dark-desktop.png)
-![Desktop Screenshot](./src/images/preview-dark-mobile.png)
+<img src="./src/images/preview-dark-mobile.png" width="300" alt="Mobile Screenshot" />
 ![Desktop Screenshot](./src/images/preview-light-desktop.png)
 ![Desktop Screenshot](./src/images/preview-light-mobile.png)
 
