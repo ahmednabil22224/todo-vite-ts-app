@@ -1,81 +1,93 @@
-// import './css/style.css'
-import Item from './model/Item'
-import List from './model/List'
-import ListTemplate from './model/ListTemplate'
-// import OverLay from './model/Overlay'
+import Item from "./model/Item";
+import List from "./model/List";
+import ListTemplate from "./model/ListTemplate";
+import { renderFooter } from "./components/Footer";
+import { overLay } from "./components/Overlay";
 
-const init= () => {
-    const lst= List.instance;
-    const template= ListTemplate.instance;
-    
+const init = () => {
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  if (!localStorage.getItem("mode")) {
+    localStorage.setItem("mode", prefersDark ? "dark" : "light");
+  }
+  document.body.classList.add(localStorage.getItem("mode") ?? "");
 
-    lst.load()
-    template.render(lst)
-// --------------------- Add Item -----------------------
-    const entryAddItem= document.getElementById("add-entry-item") as HTMLInputElement
-    let addBttn= document.querySelector('.add-item') as HTMLButtonElement;
+  const lst = List.instance;
+  const template = ListTemplate.instance;
 
-    entryAddItem.addEventListener('input', () : void => {
-        addBttn.disabled = !entryAddItem.value.trim(); 
-    })
+  lst.load();
+  template.render(lst);
 
-    const addEntryForm= document.getElementById("itemEntryForm") as HTMLFormElement
-    addEntryForm.addEventListener("submit", (e: SubmitEvent):void => {
-        e.preventDefault()
-        
-        const id= lst.listItems.length ? Number(lst.listItems[lst.listItems.length-1].id)+1 : 1;
-        const newItem= new Item(id.toString(), entryAddItem.value.slice(0, 25))
-        console.log(entryAddItem.value.slice(0, 25))
-        entryAddItem.value= "";
-        entryAddItem.focus();  
-        addBttn.disabled = true; 
-        lst.add(newItem)
-        template.render(lst)
-    })
-// ----------------------Calling Overlay And Update Item-----------------------
-    // document.addEventListener('click', (e:Event) :void => {
-    //     const targetButton= e.target as HTMLButtonElement;
-        
-    //     const bttn: HTMLButtonElement | null = targetButton.closest(".update-button");
-    //     if(!bttn) return;
+  // --------------------- Add Item -----------------------
+  const entryAddTask = document.getElementById(
+    "add-entry-task"
+  ) as HTMLInputElement;
+  let addTask = document.querySelector(".add-task") as HTMLButtonElement;
 
-    //     // ---------------------Call overlay------------------------------
-    //     OverLay();
-    //     // -----------------------Update Item------------------------------
-    //     const updatedItem: Item|undefined = lst.listItems.find(item => item.id === bttn.id);
+  entryAddTask.addEventListener("input", (): void => {
+    addTask.disabled = !entryAddTask.value.trim();
+  });
 
-    //     const updateInput= document.querySelector('.update-input') as HTMLInputElement;
-    //     updateInput.focus();
-    //     if(updatedItem) updateInput.value= updatedItem.item ;
+  const addEntryForm = document.getElementById(
+    "taskEntryForm"
+  ) as HTMLFormElement;
+  addEntryForm.addEventListener("submit", (e: SubmitEvent): void => {
+    e.preventDefault();
 
-    //     document.querySelector('.message')!.addEventListener('click', (e:Event) => {
-    //         const buttonTarget= e.target as HTMLButtonElement;
-        
-    //         if(buttonTarget.classList.contains('yes') && (updateInput.value!==updatedItem?.item && updateInput.value)){
-    //             const itemObj:Item= new Item(bttn.id ,updateInput.value, false, false); 
-    //             lst.update(itemObj);
-    //             template.render(lst);
-    //             document.querySelector('.overlay')?.remove();
-    //         }else if(buttonTarget.classList.contains('no')  || (updateInput.value===updatedItem?.item)){
-    //             document.querySelector('.overlay')?.remove();
-    //         }
-    //     })
-    // })
-// --------------------- Search Item -----------------------
-    const entrySearchedItem= document.getElementById("search-item") as HTMLInputElement
-    entrySearchedItem.addEventListener("input", (e:Event):void => {
-        const entrySearchedItem= e.target as HTMLInputElement;
-        
-        lst.searchedItemsValue= entrySearchedItem.value;
-       
-        template.render(lst)
-    })
-// --------------------- Clear All Items -----------------------
-    document.getElementById("clear")?.addEventListener("click", ():void => {
-        lst.clear();
-        template.render(lst)
-    })
-}
+    const id = lst.listItems.length
+      ? Number(lst.listItems[lst.listItems.length - 1].id) + 1
+      : 1;
+    const newItem = new Item(id.toString(), entryAddTask.value.slice(0, 25));
+    entryAddTask.value = "";
+    entryAddTask.focus();
+    addTask.disabled = true;
+    lst.add(newItem);
+    template.render(lst);
+  });
 
+  // --------------------- Search Item -----------------------
+  const entrySearchedTasks = document.getElementById(
+    "search-tasks"
+  ) as HTMLInputElement;
+  entrySearchedTasks.addEventListener("input", (e: Event): void => {
+    const searchedValue = e.target as HTMLInputElement;
 
-document.addEventListener("DOMContentLoaded", init)
+    lst.searchedItemsValue = searchedValue.value;
+
+    template.render(lst);
+  });
+
+  // --------------------- Clear All Items -----------------------
+  document.querySelector(".clear-lst")?.addEventListener("click", (): void => {
+    // -----------------Calling OverLay----------------
+    overLay("All Tasks", "delete");
+
+    document.querySelectorAll(".over-lay-message button")!.forEach((bttn) =>
+      bttn.addEventListener("click", (e: Event) => {
+        const buttonTarget = e.target as HTMLButtonElement;
+
+        if (buttonTarget.classList.contains("yes")) {
+          lst.clear();
+          template.render(lst);
+          renderFooter();
+        }
+        document.querySelector(".over-lay-box")?.remove();
+      })
+    );
+  });
+
+  // -----------------------Render Footer--------------------------
+  renderFooter();
+
+  //----------------------Convert Light Mode Listener---------------------
+  document.querySelector(".mode")?.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    if (localStorage.getItem("mode") === "light") {
+      localStorage.setItem("mode", "dark");
+    } else {
+      localStorage.setItem("mode", "light");
+    }
+  });
+};
+
+document.addEventListener("DOMContentLoaded", init);

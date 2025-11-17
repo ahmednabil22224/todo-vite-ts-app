@@ -13,12 +13,16 @@ It allows users to manage their tasks easily with options to add, update, delete
 
 ## ✨ Features
 
-- ➕ Add new todos
-- ✏️ Update existing todos
-- ❌ Delete todos
-- ✅ Mark tasks as completed or active
-- 🔍 Filter tasks (all, completed, pending)
-- 💾 Data persistence with Local Storage
+- **Add, Update, Delete Tasks**
+- **Mark Tasks as Completed / Not Completed**
+- **Mark Tasks as Important**
+- **Search Tasks by Title**
+- **Filter Tasks**:
+- **Dark Mode** toggle
+- **Progress Bar** showing task completion
+- **Responsive Design** for all screen sizes
+- **Overlay Messages & Toast Notifications** for user actions
+- **LocalStorage Support** to save tasks persistently
 
 ---
 
@@ -45,12 +49,14 @@ todo-vite-ts App/
 │   └─model/
 │      ├── Item.ts
 │      ├── List.ts
-│      ├── ListTemplate.ts
+│      └─ ListTemplate.ts
+│   └─components/
+│      ├── Footer.ts
+│      ├── Header.ts
 │      └── Overlay.ts
 │   └─images/
-│      ├── screenshot.png
+│      ├── screenshots.png
 │      └── lighthouse.png
-│
 ├── README.md
 └── package.json
 ```
@@ -59,7 +65,10 @@ todo-vite-ts App/
 
 ## 📸 Screenshots
 
-![Desktop Screenshot](./src/images/screenshot.png)
+![Desktop Screenshot](./src/images/preview-dark-desktop.png)
+![Desktop Screenshot](./src/images/preview-dark-mobile.png)
+![Desktop Screenshot](./src/images/preview-light-desktop.png)
+![Desktop Screenshot](./src/images/preview-light-mobile.png)
 
 ---
 
@@ -86,7 +95,7 @@ npm run dev
 | Metric            | Score |
 | ----------------- | ----- |
 | ⚡ Performance    | 100%  |
-| ♿ Accessibility  | 100%  |
+| ♿ Accessibility  | 95%   |
 | 🛡️ Best Practices | 100%  |
 | 🔍 SEO            | 100%  |
 
